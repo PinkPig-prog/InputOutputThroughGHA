@@ -12,11 +12,14 @@ def estimate_coef(x, y):
     return (b_0, b_1)
 
 if __name__ == "__main__":
-    # Read CSV with columns: x, y
     df = pd.read_csv("data.csv")
     x = df["x"].values
     y = df["y"].values
 
     b_0, b_1 = estimate_coef(x, y)
-    print(f"Intercept (b0): {b_0}")
-    print(f"Slope (b1): {b_1}")
+
+    with open("regression_output.txt", "w") as f:
+        f.write(f"Intercept (b0): {b_0}\n")
+        f.write(f"Slope (b1): {b_1}\n")
+
+    print("Regression results saved to regression_output.txt")
