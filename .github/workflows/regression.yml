@@ -2,10 +2,10 @@ name: Run Linear Regression
 
 on:
   push:
-    branches: [ "main" ] 
+    branches: [ "main" ]
     paths:
-      - 'data.csv'         
-      - 'regression.py'   
+      - 'data.csv'
+      - 'regression.py'
 
 jobs:
   run-regression:
@@ -25,3 +25,9 @@ jobs:
 
     - name: Run regression
       run: python regression.py
+
+    - name: Upload regression results
+      uses: actions/upload-artifact@v4
+      with:
+        name: regression-results
+        path: regression_output.txt
